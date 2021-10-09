@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ShowList = ({showData}) => {
     return (
         <div  className="list-view">
@@ -6,12 +8,9 @@ const ShowList = ({showData}) => {
             <h1 >{show.show.name}</h1>
             <img style={{width:"100px"}} src={show.show.image.original} alt="image" />
             <p>{show.show.language}</p>
-           {
-               show.show.genres.map((genre=>(
-                   <span >{genre} </span>
-               )))
-           }
-           <button>summary</button>
+           
+          <Link to={`/summary/${show.show.id}`}><button>summary</button></Link>
+           
             </div>
           
         ))}
