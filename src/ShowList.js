@@ -4,12 +4,12 @@ const ShowList = ({showData}) => {
     return (
         <div  className="list-view">
         {showData.map((show) => (
-            <div className='summary' key={show.show.id}>
-            <h1 >{show.show.name}</h1>
-            <img style={{width:"100px"}} src={show.show.image.original} alt="show-poster" />
-            <p>{show.show.language}</p>
+            <div className='summary' key={show.id}>
+            <h1 >{show.name}</h1>
+            <img style={{width:"100px"}} src={show.image.original} alt="show-poster" />
+            <p>{show.language}</p>
            
-          <Link to={`/summary/${show.show.id}`}><button>summary</button></Link>
+          <Link to={`/summary/${show.id}`}><button>summary</button></Link>
            
             </div>
           

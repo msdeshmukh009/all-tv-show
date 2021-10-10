@@ -1,26 +1,36 @@
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
 const Summary = () => {
   const { id } = useParams();
-  let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
+  let baseUrl = "https://api.tvmaze.com/shows";
   const { data, isPending, error } = useFetch(baseUrl);
-  let show = data && data.filter((item) => item.show.id === Number(id));
-  let generArray = show && show[0].show.genres;
+  let show = data && data.filter((item) => item.id === Number(id));
+  let generArray = show && show[0].genres;
   let generStr = "";
       generArray && generArray.map(item=>{
      generStr+=" " +item;
+     return generStr;
         })
-      console.log(generStr)
-
+        let summarystr =show && show[0].summary;
+        console.log(summarystr)
+      //   console.log(generStr)
+      // console.log(show)
   return (
     <div className="summary">
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
-      {show && <div><h2>{show[0].show.name}</h2></div>}
-      {show && <div><img style={{width:"20%"}} src={show[0].show.image.original} alt="" /></div> }
-      {show && <div><p>{generStr}</p></div>}
-      {show && <div>{show[0].show.summary}</div>}
+      {show && <div>
+               <h2>{show[0].name}</h2>
+               <img style={{width:"20%"}} src={show[0].image.original} alt="poster" />
+               <p>{generStr}</p>
+               <p>Premiered: {show[0].premiered} <br/>Status:{show[0].status} </p>
+               <p>Average runtime: {show[0].averageRuntime}min</p>
+               <p>Rating: {show[0].rating.average}</p>
+               <div dangerouslySetInnerHTML={{ __html: `${summarystr}` }}></div>
+               <a href={show[0].officialSite} target="_blank">officialSite</a>
+               </div> 
+      }
     </div>
   );
 };

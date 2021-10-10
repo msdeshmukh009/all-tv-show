@@ -6,7 +6,8 @@
   import NotFound  from './NotFound';
 import Navbar from './Navbar';
   function App() {
-    let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
+    //let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
+    let baseUrl = "https://api.tvmaze.com/shows"
     const {data:showData, isPending, error} = useFetch(baseUrl);
     
     return (
