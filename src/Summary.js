@@ -2,26 +2,16 @@ import { useParams } from "react-router";
 import { useState,useEffect } from "react";
 const Summary = ( {showData}) => {
     const [summaryShow,setSummaryShow] = useState(null);
-    const [status,setStatus] = useState('pending');
     const {id} = useParams();
-    let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
-    console.log(id)
+    
+    //console.log(id);
+   useEffect(()=>{
+      let show = showData.filter(item=> item.show.id === Number(id))
+      setSummaryShow(show);
+     // console.log(summaryShow)
+   },[showData, id])
    
-    useEffect(()=>{
-        fetch(baseUrl)
-        .then(res=>res.json())
-        .then((data)=>{
-            
-            let show = data.filter(item => item.show.id == id);
-            setSummaryShow(show);
-            //console.log(show)
-            console.log(summaryShow)
-           // console.log(data)
-         })
-         .then(()=>{
-            setStatus("resolved")
-         })
-    },[status])
+
         
     return ( 
         <div className="summary">
