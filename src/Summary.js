@@ -1,15 +1,15 @@
 import { useParams } from "react-router";
-// import { useState } from "react/cjs/react.development";
-// import BookTicket from "./BookTicket";
+import { useState } from "react/cjs/react.development";
+import BookTicket from "./BookTicket";
 import useFetch from "./useFetch";
 const Summary = () => {
   const { id } = useParams();
   let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
   const { data, isPending, error } = useFetch(baseUrl);
- // const [isOpen,setIsOpen] = useState(false);
-  // const togglePopup = () => {
-  //       setIsOpen(!isOpen);
-  // }
+ const [isOpen,setIsOpen] = useState(false);
+  const togglePopup = () => {
+        setIsOpen(!isOpen);
+  }
   let show = data && data.filter((item) => item.show.id === Number(id));
 
   let generArray = show && show[0].show.genres;
@@ -33,12 +33,12 @@ const Summary = () => {
                <p>Average runtime: {show[0].show.averageRuntime}min</p>
                <p>Rating: {show[0].show.rating.average}</p>
                <div dangerouslySetInnerHTML={{ __html: `${summarystr}` }}></div>
-               {/* <button onClick={togglePopup}>book ticket</button> */}
+               <button onClick={togglePopup}>book ticket</button>
                </div> 
       }
-      {/* {
+      {
         isOpen && <BookTicket show={show} handleClose={togglePopup}/>
-      } */}
+      }
     </div>
   );
 };
