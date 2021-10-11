@@ -1,4 +1,4 @@
-  import './App.css';
+  import './index.css';
   import ShowList from './ShowList';
   import Summary from './Summary';
   import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -13,14 +13,16 @@ import Navbar from './Navbar';
     return (
         <div className="App">
           <Router>
-            <Navbar/>
+            
             <Switch>
               <Route exact path="/">
+              <Navbar title="All Tv Shows"/>
               {isPending && <div>Loading...</div>}
               {error && <div>{ error }</div>}
               {showData && <ShowList showData={showData} />}
               </Route>
               <Route path="/summary/:id">
+              <Navbar/> 
               {showData && <Summary showData={showData} error={error} isPending={isPending}/>}
               </Route>
               <Route path="*">

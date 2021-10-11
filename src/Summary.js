@@ -22,18 +22,41 @@ const Summary = () => {
 
   return (
     <div className="summary">
-      <h1>summary</h1>
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
-      {show && <div>
-               <h2>{show[0].show.name}</h2>
-               <img style={{width:"20%"}} src={show[0].show.image.original} alt="poster" />
-               <p>{generStr}</p>
-               <p>Premiered: {show[0].show.premiered} <br/>Status:{show[0].show.status} </p>
-               <p>Average runtime: {show[0].show.averageRuntime}min</p>
-               <p>Rating: {show[0].show.rating.average}</p>
-               <div dangerouslySetInnerHTML={{ __html: `${summarystr}` }}></div>
-               <button onClick={togglePopup}>book ticket</button>
+      {show && <div className="show-img">
+      
+      <img  src={show[0].show.image.original} alt="poster" />
+      </div>}
+      {show && <div className="show-info">
+               
+      <h1>{show[0].show.name}</h1>
+               <table style={{textAlign:"center",margin:"auto"}}>
+               
+               <tr>
+                 <th>genres: </th>
+                 <td> {generStr}</td>
+                 </tr>
+                 <tr>
+                 <th>Premiered: </th>
+                 <td> {show[0].show.premiered}</td>
+                 </tr>
+                 <tr>
+                 <th>Status: </th>
+                 <td> {show[0].show.status}</td>
+                 </tr>
+                 <tr>
+                 <th>Average runtime:  </th>
+                 <td> {show[0].show.averageRuntime}min</td>
+                 </tr>
+                 <tr>
+                   <th>Rating:</th>
+                  <tr>{show[0].show.rating.average}</tr>
+                 </tr>
+               </table>
+               
+               <div className="summary-para" dangerouslySetInnerHTML={{ __html: `${summarystr}` }}></div>
+               <button onClick={togglePopup}>book tickets!!</button>
                </div> 
       }
       {

@@ -1,15 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+:root{
+  --primary-color:#171717;
+  --text-color:#F9F3DF;
+  --secondary-color:#F0A500;
+}
 body {
+  text-align: center;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+nav a {
+  float: left;
+}
+nav h1{
+  color:var(--secondary-color);
+}
+.summary-list{
+  width: 50%;
+  margin: 1rem auto;
+  border: 2px solid var(--secondary-color) ;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.summary-list img{
+  width: 70%;
+}
+button{
+  cursor: pointer;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border:2px solid var(--secondary-color);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+button:hover{
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.summary img{
+  width: 80%;
+}
+.summary button{
+  margin-bottom: 2rem;
+}
+.summary-para{
+  border: 2px solid var(--secondary-color);
+  border-radius: 00.3rem;
+  padding: 1rem;
+  width: 80%;
+  margin: 1rem auto;
 }
 /* Popup style */
 .book-ticket-box {
@@ -28,10 +72,10 @@ code {
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
+  background: var(--primary-color);
   border-radius: 4px;
   padding: 20px;
-  border: 1px solid #999;
+  border: 1px solid var(--secondary-color);
   overflow: auto;
 }
 
@@ -41,12 +85,91 @@ code {
   position: fixed;
   right: calc(15% - 30px);
   top: calc(100vh - 85vh - 33px);
-  background: #ededed;
+  background: var(--primary-color);
   width: 25px;
   height: 25px;
   border-radius: 50%;
   line-height: 20px;
   text-align: center;
-  border: 1px solid #999;
+  border: 1px solid var(--secondary-color);
   font-size: 20px;
+}
+.box input {
+  margin: auto;
+  display: block;
+  width: 60%;
+  margin-bottom: 5px;
+  border-radius: 0.3rem;
+  border: 1.3px solid var(--secondary-color);
+  padding: 0.75rem;
+}
+.box button {
+  margin: auto;
+  display: block;
+  cursor: pointer;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border:2px solid var(--secondary-color);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  
+}
+.box button:hover{
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.poster-img img{
+  width: 50%;
+}
+@media only screen and (min-width: 900px){
+  nav h1{
+    font-size: 2.5rem;
+  }
+  nav img{
+    width: 50px;
+  }
+  .list-view{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .summary-list{
+    width: 20%;
+    margin: 1rem ;
+  }
+  .summary img{
+    width: 100%;
+  }
+  .summary{
+    display: flex;
+    margin-top: 5rem;
+  }
+  .summary h1{
+    font-size: 3.5rem;
+  }
+  .box{
+    display: flex;
+    align-items: center;
+  }
+  .box img{
+    width: 50%;
+  }
+  .poster-img{
+    width: 50%;
+  }
+  .box h1{
+    font-size: 2.2rem;
+  }
+  .form{
+    width: 50%;
+  }
+  .message{
+    margin: auto;
+    font-size: 2rem;
+  }
+  
+  .message img{
+    width: 70%;
+    margin: auto;
+  }
 }
