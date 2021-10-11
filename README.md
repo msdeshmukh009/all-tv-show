@@ -15,4 +15,10 @@ This website features ten tv-shows and their summary. All the data is fetched fr
 # Preview  
 ## Web-preview  
 ![Web-preview](preview/home-web-preview.png)  
+![Web-preview](preview/sumary-web-preview.png)    
+
+## Small-screen    
+![Web-preview](preview/home-mobile-preview.png)    
+![Web-preview](preview/sumary-mobile-preview.png)   
+
 
