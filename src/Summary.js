@@ -34,26 +34,13 @@ const Summary = () => {
         <div className="show-info">
           <h1>{show[0].show.name}</h1>
           <table style={{ textAlign: "center", margin: "auto" }}>
-            <tr>
-              <th>genres: </th>
-              <td> {generStr}</td>
-            </tr>
-            <tr>
-              <th>Premiered: </th>
-              <td> {show[0].show.premiered}</td>
-            </tr>
-            <tr>
-              <th>Status: </th>
-              <td> {show[0].show.status}</td>
-            </tr>
-            <tr>
-              <th>Average runtime: </th>
-              <td> {show[0].show.averageRuntime}min</td>
-            </tr>
-            <tr>
-              <th>Rating:</th>
-              <tr>{show[0].show.rating.average}</tr>
-            </tr>
+            <tbody>
+            <tr><th>genres:</th><td>{generStr}</td></tr>
+            <tr><th>Premiered:</th><td>{show[0].show.premiered}</td></tr>
+            <tr><th>Status:</th><td>{show[0].show.status}</td></tr>
+            <tr><th>Average-runtime:</th><td>{show[0].show.averageRuntime}min</td></tr>
+            <tr><th>Rating:</th><tr>{show[0].show.rating.average}</tr></tr>
+            </tbody>
           </table>
 
           <div
