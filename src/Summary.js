@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import { useState } from "react/cjs/react.development";
-import BookTicket from "./BookTicket";
+// import { useState } from "react/cjs/react.development";
+// import BookTicket from "./BookTicket";
 import useFetch from "./useFetch";
 const Summary = () => {
   const { id } = useParams();
