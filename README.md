@@ -12,4 +12,7 @@ This website features ten tv-shows and their summary. All the data is fetched fr
 3.React Js   
 [Live Project](https://all-tv-shows.netlify.app/)   
 
-#Preview  
+# Preview  
+## Web-preview  
+![Web-preview](preview/home-web-preview.png)  
+
