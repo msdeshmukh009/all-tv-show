@@ -1,14 +1,14 @@
 import { useParams } from "react-router";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import BookTicket from "./BookTicket";
 import useFetch from "./useFetch";
 const Summary = () => {
   const { id } = useParams();
   let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
   const { data, isPending, error } = useFetch(baseUrl);
- const [isPopup,setIsPopup] = useState(false);
+ const [isBookingBox,setIsBookingBox] = useState(false);
   const togglePopup = () => {
-        setIsPopup(!isPopup);
+    setIsBookingBox(!isBookingBox);
   }
   let show = data && data.filter((item) => item.show.id === Number(id));
 
@@ -37,7 +37,7 @@ const Summary = () => {
                </div> 
       }
       {
-        isPopup && <BookTicket show={show} handleClose={togglePopup}/>
+        isBookingBox && <BookTicket show={show} handleClose={togglePopup}/>
       }
     </div>
   );
