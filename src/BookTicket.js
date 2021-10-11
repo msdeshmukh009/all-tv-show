@@ -65,11 +65,13 @@ const BookTicket = ({ show, handleClose }) => {
                 onChange={(e) => setNoOFSeats(e.target.value)}
                 type="number"
               />
+              <label>Date:</label>
               <input
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 type="date"
               />
+               <label>Time:</label>
               <input
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
