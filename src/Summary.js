@@ -6,9 +6,9 @@ const Summary = () => {
   const { id } = useParams();
   let baseUrl = "https://api.tvmaze.com/search/shows?q=all";
   const { data, isPending, error } = useFetch(baseUrl);
- const [isOpen,setIsOpen] = useState(false);
+ const [isPopup,setIsPopup] = useState(false);
   const togglePopup = () => {
-        setIsOpen(!isOpen);
+        setIsPopup(!isPopup);
   }
   let show = data && data.filter((item) => item.show.id === Number(id));
 
@@ -37,7 +37,7 @@ const Summary = () => {
                </div> 
       }
       {
-        isOpen && <BookTicket show={show} handleClose={togglePopup}/>
+        isPopup && <BookTicket show={show} handleClose={togglePopup}/>
       }
     </div>
   );
