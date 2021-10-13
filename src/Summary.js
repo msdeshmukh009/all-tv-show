@@ -34,7 +34,7 @@ const Summary = () => {
           <h1>{show[0].show.name}</h1>
           <table style={{ textAlign: "center", margin: "auto" }}>
             <tbody>
-            <tr><th>genres:</th><td>{generStr}</td></tr>
+            <tr><th>Genres:</th><td>{generStr}</td></tr>
             <tr><th>Premiered:</th><td>{show[0].show.premiered}</td></tr>
             <tr><th>Status:</th><td>{show[0].show.status}</td></tr>
             <tr><th>Average-runtime:</th><td>{show[0].show.averageRuntime}min</td></tr>
