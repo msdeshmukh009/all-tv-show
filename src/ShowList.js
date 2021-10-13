@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ShowContext } from "./ShowContext";
 
-const ShowList = ({ showData }) => {
+
+const ShowList = () => {
+  const {data:showData} = useContext(ShowContext);
   return (
     <div className="list-view">
+      
       {showData.map((show) => (
         <div className="summary-list" key={show.show.id}>
           <h2>{show.show.name}</h2>
