@@ -1,14 +1,20 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ShowContext } from "./ShowContext";
-
-
+//import { ShowContext } from "./ShowContext";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchShows } from "./redux";
+import { useEffect } from "react";
 const ShowList = () => {
-  const {data:showData} = useContext(ShowContext);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(fetchShows());
+  },[])
+const showData = useSelector(state => state.shows)
+  // const {data:showData} = useContext(ShowContext);
   return (
     <div className="list-view">
       
-      {showData.map((show) => (
+      {showData && showData.map((show) => (
         <div className="summary-list" key={show.show.id}>
           <h2>{show.show.name}</h2>
           <img src={show.show.image.original} alt="show-poster" />

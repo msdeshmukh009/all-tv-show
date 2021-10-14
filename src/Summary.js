@@ -1,10 +1,18 @@
 import { useParams } from "react-router";
-import { useState,useContext } from "react";
+import { useState } from "react";
 import BookTicket from "./BookTicket";
-import { ShowContext } from "./ShowContext";
+import {useSelector,useDispatch} from 'react-redux';
+import { fetchShows } from "./redux";
+import { useEffect } from "react";
+//import { ShowContext } from "./ShowContext";
 const Summary = () => {
+  const dispatch = useDispatch();
+    const data = useSelector(state => state.shows);
+    useEffect(()=>{
+        dispatch(fetchShows());
+    },[])
   const { id } = useParams();
-  const { data } = useContext(ShowContext);
+  
   const [isBookingBox, setIsBookingBox] = useState(false);
   let show = data && data.filter((item) => item.show.id === Number(id));
   let generArray = show && show[0].show.genres;

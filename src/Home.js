@@ -1,15 +1,25 @@
 import ShowList from "./ShowList";
-import { useContext } from "react";
-import { ShowContext } from "./ShowContext";
+// import { useContext } from "react";
+// import { ShowContext } from "./ShowContext";
 import Navbar from "./Navbar";
-const Home = () => {
-    const {data:showData,isPending,error} = useContext(ShowContext);
+import React, {useEffect} from "react";
+import {useSelector,useDispatch} from 'react-redux';
+import { fetchShows } from "./redux";
+const Home = () => { 
+const dispatch = useDispatch();
+const showData = useSelector(state => state.shows);
+useEffect(()=>{
+    dispatch(fetchShows());
+},[])
+
+
+console.log(showData)
     return ( <div className="home">
         <Navbar title="All Tv Shows" />
-        {isPending && <div>Loading...</div>}
-        {error && <div>{error}</div>}
-        {showData && <ShowList/>} 
+        {showData.loading && <div>Loading...</div>}
+        {showData.error && <h2>{showData.error}</h2>}
+        {showData && <ShowList props={showData}/>} 
     </div> );
 }
- 
+
 export default Home;
