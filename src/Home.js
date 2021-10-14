@@ -10,6 +10,7 @@ const dispatch = useDispatch();
 const showData = useSelector(state => state.shows);
 useEffect(()=>{
     dispatch(fetchShows());
+    console.log('useEffect from Home')
 },[])
 
 

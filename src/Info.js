@@ -16,7 +16,7 @@ const Info = () => {
         <Navbar />
         {showData.loading && <div>Loading...</div>}
         {showData.error && <h2>{showData.error}</h2>}
-        {showData && <Summary/> } 
+        {showData && <Summary showData={showData}/> } 
     </div> );
 }
  

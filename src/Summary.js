@@ -4,17 +4,24 @@ import BookTicket from "./BookTicket";
 import {useSelector,useDispatch} from 'react-redux';
 import { fetchShows } from "./redux";
 import { useEffect } from "react";
+import useFetch from "./useFetch";
 //import { ShowContext } from "./ShowContext";
 const Summary = () => {
-  const dispatch = useDispatch();
-    const data = useSelector(state => state.shows);
-    useEffect(()=>{
-        dispatch(fetchShows());
-    },[])
+  const {data,isPending,error} =  useFetch("https://api.tvmaze.com/search/shows?q=all")
+  // const data = useSelector(state => state.shows);
+  // useEffect(()=>{
+  //   dispatch(fetchShows())
+  //   console.log('useEffect')
+  // },[])
+  // const dispatch = useDispatch();
+  
+    
+    // console.log(data)
   const { id } = useParams();
   
   const [isBookingBox, setIsBookingBox] = useState(false);
-  let show = data && data.filter((item) => item.show.id === Number(id));
+  let show = data &&  data.filter((item) => item.show.id === Number(id));
+  
   let generArray = show && show[0].show.genres;
   let summarystr = show && show[0].show.summary;
 
