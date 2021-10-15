@@ -1,18 +1,16 @@
 import ShowList from "./ShowList";
-// import { useContext } from "react";
-// import { ShowContext } from "./ShowContext";
 import Navbar from "./Navbar";
 import React, {useEffect} from "react";
 import {useSelector,useDispatch} from 'react-redux';
-import { fetchShows } from "./redux";
-import Summary from './Summary'
+import { fetchShows } from "../redux";
+
 const Home = () => { 
 const dispatch = useDispatch();
 const showData = useSelector(state => state.shows);
 useEffect(()=>{
     dispatch(fetchShows());
     
-},[])
+},[dispatch])
 
 
 //console.log(showData)

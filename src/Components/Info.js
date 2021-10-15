@@ -3,14 +3,14 @@
 import Summary from "./Summary";
 import Navbar from "./Navbar";
 import {useDispatch,useSelector} from 'react-redux';
-import { fetchShows } from "./redux";
+import { fetchShows } from "../redux";
 import { useEffect } from "react";
 const Info = () => {
     const dispatch = useDispatch();
     const showData = useSelector(state => state.shows);
     useEffect(()=>{
         dispatch(fetchShows());
-    },[])
+    },[dispatch])
     //const {data,isPending,error} = useContext(ShowContext);
     return ( <div className="info">
         <Navbar />

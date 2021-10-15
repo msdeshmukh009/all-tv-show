@@ -2,15 +2,15 @@
 import { Link } from "react-router-dom";
 //import { ShowContext } from "./ShowContext";
 import { useDispatch,useSelector } from "react-redux";
-import { fetchShows } from "./redux";
+import { fetchShows } from "../redux";
 import { useEffect } from "react";
 const ShowList = () => {
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(fetchShows());
-  },[])
+  },[dispatch])
 const showData = useSelector(state => state.shows)
-  // const {data:showData} = useContext(ShowContext);
+  
   return (
     <div className="list-view">
       

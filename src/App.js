@@ -1,21 +1,14 @@
 import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NotFound from "./NotFound";
-//import { ShowProvider } from "./ShowContext";
-import Home from "./Home";
-import Info from "./Info";
+import NotFound from "./Components/NotFound";
+import Home from "./Components/Home";
+import Info from "./Components/Info";
 import { Provider } from 'react-redux';
 import store from "./redux/store";
-import Summary from "./Summary";
-import SummaryComponent from "./SummaryComponent";
-import TrialComponent from "./TrialComponent";
-//import TrialComponent from "./TrialComponent";
-
 
 function App() {
   return (
-    <Provider store={store}>
-     {/* <ShowProvider> */}
+    <Provider store={store}> 
       <div className="App">
         <Router>
           <Switch>
@@ -24,10 +17,6 @@ function App() {
               
             </Route>
             <Route path="/summary/:id">
-              {/* <Info /> */}
-             {/* <SummaryComponent/> */}
-             {/* <TrialComponent/> */}
-            {/* <Summary/> */}
             <Info/>
             </Route>
             <Route path="*">
@@ -36,7 +25,6 @@ function App() {
           </Switch>
         </Router>
       </div>
-  {/* </ShowProvider> */}
     </Provider>
   )
 }
