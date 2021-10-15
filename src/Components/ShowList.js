@@ -1,6 +1,4 @@
-// import { useContext } from "react";
 import { Link } from "react-router-dom";
-//import { ShowContext } from "./ShowContext";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchShows } from "../redux";
 import { useEffect } from "react";

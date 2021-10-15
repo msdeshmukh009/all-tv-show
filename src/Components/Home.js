@@ -19,7 +19,6 @@ useEffect(()=>{
         {showData && showData.loading && <div>Loading...</div>}
         {showData && showData.error && <h2>{showData.error}</h2>}
         {showData && <ShowList props={showData}/>} 
-        {/* {showData && <Summary props={showData}/>} */}
     </div> );
 }
 
