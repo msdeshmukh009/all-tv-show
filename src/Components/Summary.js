@@ -9,7 +9,6 @@ const Summary = ({showData,fetchshowData}) => {
   
   useEffect(()=>{
     fetchshowData()
-    console.log('useEffect')
   },[fetchshowData])
 const { id } = useParams();
 const [isBookingBox, setIsBookingBox] = useState(false);
