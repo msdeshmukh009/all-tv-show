@@ -1,39 +1,32 @@
-import React, {useEffect} from "react";
+import React from "react";
+import { useEffect } from "react";
 import {connect} from 'react-redux';
 import { fetchShows } from "./redux";
+import { useParams } from "react-router"; 
+import useFetch from "./useFetch";
 
 
 const TrialComponent = ({showData,fetchShows}) => {
     useEffect(()=>{
-        fetchShows();
+        fetchShows()
         console.log(showData)
     },[])
+    const { id } = useParams();
+   let show = showData && showData.filter((item) => item.show.id === Number(id));
+    console.log(showData && show[0])
     return (
         <div>
-            {showData.loading && <h2>Loading...</h2>}
-            {showData.error && <h2>{showData.error}</h2>}
-            {
-                showData.map(show =>(
-                  <div>
-                      <h2>{show.show.name}</h2>
-                  </div>  
-                ))
-            }
+        <h2>Summary</h2>
+        {
+            showData && <div>
+                <h1>{show[0].show.name}</h1>
+            </div>
+            
+        }
         </div>
+        
     )
-    // showData.loading ? (<h2>Loading...</h2>)
-    // : showData.error ? (<h2>{showData.error}</h2>)
-    // : (
-    //     <div>
-    //         <h2>All Tv Shows</h2>
-    //         <div>
-    //             {
-    //                 showData && showData.shows && 
-    //                 showData.shows.map(show =>  <h2>{show.show.name}</h2>)
-    //             }
-    //         </div>
-    //     </div>
-    // )
+    
 
 }
 const mapStateToProps = (state) =>{

@@ -3,9 +3,9 @@ FETCH_SHOWS_SUCCESS,
 FETCH_SHOWS_FAILURE} from './showActionTypes';
 
 const initialState = {
-    loading: false,
-    shows: [],
-    error: ''
+    loading: true,
+    shows: null,
+    error: null
 }
 
 const reducer = (state=initialState,action) =>{
@@ -17,11 +17,11 @@ const reducer = (state=initialState,action) =>{
         case FETCH_SHOWS_SUCCESS: return{
             loading:false,
             shows:action.payload,
-            error:''
+            error:null
         }
         case FETCH_SHOWS_FAILURE: return{
             loading: false,
-            shows:[],
+            shows:null,
             error:action.payload
         }
         default: return state

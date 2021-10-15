@@ -14,9 +14,9 @@ const Info = () => {
     //const {data,isPending,error} = useContext(ShowContext);
     return ( <div className="info">
         <Navbar />
-        {showData.loading && <div>Loading...</div>}
-        {showData.error && <h2>{showData.error}</h2>}
-        {showData && <Summary showData={showData}/> } 
+        {showData && showData.loading && <div>Loading...</div>}
+        {showData && showData.error && <h2>{showData.error}</h2>}
+        {showData && <Summary/> } 
     </div> );
 }
  

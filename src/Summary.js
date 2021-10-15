@@ -1,29 +1,36 @@
 import { useParams } from "react-router";
 import { useState } from "react";
 import BookTicket from "./BookTicket";
-import {useSelector,useDispatch} from 'react-redux';
+import {connect,useSelector,useDispatch} from 'react-redux';
 import { fetchShows } from "./redux";
 import { useEffect } from "react";
 import useFetch from "./useFetch";
 //import { ShowContext } from "./ShowContext";
-const Summary = () => {
-  const {data,isPending,error} =  useFetch("https://api.tvmaze.com/search/shows?q=all")
+const Summary = ({showData,fetchshowData}) => {
+  //const {data,isPending,error} =  useFetch("https://api.tvmaze.com/search/shows?q=all")
   // const data = useSelector(state => state.shows);
-  // useEffect(()=>{
-  //   dispatch(fetchShows())
-  //   console.log('useEffect')
-  // },[])
+  // const loading = useSelector(state => state.loading);
+  // const error = useSelector(state => state.error);
   // const dispatch = useDispatch();
+
+  useEffect(()=>{
+    // dispatch(fetchShows())
+    fetchshowData()
+    console.log('useEffect')
+  },[])
   
+ 
     
-    // console.log(data)
+    //  console.log(show)
   const { id } = useParams();
-  
+ 
   const [isBookingBox, setIsBookingBox] = useState(false);
-  let show = data &&  data.filter((item) => item.show.id === Number(id));
-  
-  let generArray = show && show[0].show.genres;
-  let summarystr = show && show[0].show.summary;
+  //let show = showData.loading ? (<p>Loading...</p>) : showData.error ? <p>{showData.error}</p> :showData.filter((item) => item.show.id === Number(id));
+  let show = showData && showData.filter((item) => item.show.id === Number(id));
+  console.log(show)
+  //console.log(data.shows)
+  let generArray = showData && show[0].show.genres;
+  let summarystr = showData && show[0].show.summary;
 
   const togglePopup = () => {
     setIsBookingBox(!isBookingBox);
@@ -44,7 +51,7 @@ const Summary = () => {
           <img src={show[0].show.image.original} alt="poster" />
         </div>
       )}
-      {show && (
+      {showData && (
         <div className="show-info">
           <h1>{show[0].show.name}</h1>
           <table style={{ textAlign: "center", margin: "auto" }}>
@@ -68,5 +75,16 @@ const Summary = () => {
     </div>
   );
 };
+const mapStateToProps = state => {
+  return {
+    showData: state.shows
+  }
+}
 
-export default Summary;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchshowData: () => dispatch(fetchShows())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Summary);
+//export default Summary;

@@ -6,7 +6,12 @@ import Home from "./Home";
 import Info from "./Info";
 import { Provider } from 'react-redux';
 import store from "./redux/store";
+import Summary from "./Summary";
+import SummaryComponent from "./SummaryComponent";
+import TrialComponent from "./TrialComponent";
 //import TrialComponent from "./TrialComponent";
+
+
 function App() {
   return (
     <Provider store={store}>
@@ -16,9 +21,14 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+              
             </Route>
             <Route path="/summary/:id">
-              <Info />
+              {/* <Info /> */}
+             {/* <SummaryComponent/> */}
+             {/* <TrialComponent/> */}
+            {/* <Summary/> */}
+            <Info/>
             </Route>
             <Route path="*">
               <NotFound />

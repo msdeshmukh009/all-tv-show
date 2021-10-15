@@ -21,16 +21,34 @@ export const fetchShowsFailure= (error) =>{
     }
 }
 
+// export const fetchShows = () =>{
+//     return (dispatch) =>{
+//         dispatch(fetchShowsRequest)
+//         axios.get('https://api.tvmaze.com/search/shows?q=all')
+//             .then(response => {
+//                 const shows = response.data;
+//                 dispatch(fetchShowsSuccess(shows))
+//             })
+//             .catch(error => {
+//                 dispatch(fetchShowsFailure(error.message))
+//             })
+//     }
+// }
+
 export const fetchShows = () =>{
     return (dispatch) =>{
         dispatch(fetchShowsRequest)
-        axios.get('https://api.tvmaze.com/search/shows?q=all')
-            .then(response => {
-                const shows = response.data;
-                dispatch(fetchShowsSuccess(shows))
-            })
-            .catch(error => {
-                dispatch(fetchShowsFailure(error.message))
-            })
+        fetch('https://api.tvmaze.com/search/shows?q=all')
+        .then(response => {
+            if(!response.ok){
+                throw Error("could not fetch the data for that endpoint")
+            }
+            return response.json()})
+        .then(data => {
+            dispatch(fetchShowsSuccess(data))
+        })
+        .catch(error => {
+            dispatch(fetchShowsFailure(error.message))
+        })
     }
 }
