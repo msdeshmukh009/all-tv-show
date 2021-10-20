@@ -39,8 +39,8 @@ const BookTicket = ({ show, handleClose }) => {
         </span>
         {!bookingStatus && (
           <div className="poster-img">
-            <h1>Book tickets for {show[0].show.name} </h1>
-            <img src={show[0].show.image.original} alt="" />
+            <h1>Book tickets for {show.name} </h1>
+            <img src={show.image.original} alt="" />
           </div>
         )}
         {!bookingStatus && (

@@ -2,22 +2,24 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import BookTicket from "./BookTicket";
 import {connect} from 'react-redux';
-import { fetchShows } from "../redux";
+import { fetchShow } from "../redux";
 import { useEffect } from "react";
 
 const Summary = ({showData,fetchshowData}) => {
+  const { id } = useParams();
   
   useEffect(()=>{
-    fetchshowData()
-  },[fetchshowData])
-const { id } = useParams();
-const [isBookingBox, setIsBookingBox] = useState(false);
-let show = showData && showData.filter((item) => item.show.id === Number(id));
-  // console.log(show)
-  
-  let generArray = showData && show[0].show.genres;
-  let summarystr = showData && show[0].show.summary;
+    fetchshowData(id)
+  },[fetchshowData,id])
 
+const [isBookingBox, setIsBookingBox] = useState(false);
+//console.log(showData)
+//let show = showData && showData.filter((item) => item.show.id === Number(id));
+  //console.log(show)
+  
+  let generArray = showData && showData.genres;
+  let summarystr = showData && showData.summary;
+ // console.log(generArray)
   const togglePopup = () => {
     setIsBookingBox(!isBookingBox);
   };
@@ -32,21 +34,21 @@ let show = showData && showData.filter((item) => item.show.id === Number(id));
 
   return (
     <div className="summary">
-      {show && (
+      {showData && (
         <div className="show-img">
-          <img src={show[0].show.image.original} alt="poster" />
+          <img src={showData.image.original} alt="poster" />
         </div>
       )}
       {showData && (
         <div className="show-info">
-          <h1>{show[0].show.name}</h1>
+          <h1>{showData.name}</h1>
           <table style={{ textAlign: "center", margin: "auto" }}>
             <tbody>
             <tr><th>Genres:</th><td>{generStr}</td></tr>
-            <tr><th>Premiered:</th><td>{show[0].show.premiered}</td></tr>
-            <tr><th>Status:</th><td>{show[0].show.status}</td></tr>
-            <tr><th>Average-runtime:</th><td>{show[0].show.averageRuntime}min</td></tr>
-            <tr><th>Rating:</th><td>{show[0].show.rating.average}</td></tr>
+            <tr><th>Premiered:</th><td>{showData.premiered}</td></tr>
+            <tr><th>Status:</th><td>{showData.status}</td></tr>
+            <tr><th>Average-runtime:</th><td>{showData.averageRuntime}min</td></tr>
+            <tr><th>Rating:</th><td>{showData.rating.average}</td></tr>
             </tbody>
           </table>
 
@@ -57,19 +59,19 @@ let show = showData && showData.filter((item) => item.show.id === Number(id));
           <button onClick={togglePopup}>book tickets!!</button>
         </div>
       )}
-      {isBookingBox && <BookTicket show={show} handleClose={togglePopup} />}
+      {isBookingBox && <BookTicket show={showData} handleClose={togglePopup} />}
     </div>
   );
 };
 const mapStateToProps = state => {
   return {
-    showData: state.shows
+    showData: state.show
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchshowData: () => dispatch(fetchShows())
+    fetchshowData: (id) => dispatch(fetchShow(id))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Summary);
