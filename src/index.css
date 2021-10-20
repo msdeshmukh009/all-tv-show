@@ -23,6 +23,17 @@ nav a {
 nav h1{
   color:var(--secondary-color);
 }
+/* input::placeholder{
+  color: var(--secondary-color);
+} */
+nav input{
+  /* background-color: var(--primary-color); */
+  padding: 0.5rem;
+  color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: 00.3rem;
+  margin-right: 0.5rem;
+}
 .summary-list{
   width: 50%;
   margin: 1rem auto;

@@ -17,7 +17,7 @@ const Navbar = (props) => {
         </Link>
         <h1>{props.title}</h1>
         <form onSubmit={onSubmitEvent}>
-          <input onChange={onChangeInput}/>
+          <input placeholder="Search by show name..." onChange={onChangeInput}/>
           <button>search</button>
         </form>
       </nav>
